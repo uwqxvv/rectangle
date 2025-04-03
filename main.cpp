@@ -31,12 +31,12 @@ public:
 
 void Rectangle :: fixNegative() {
     if(width < 0 ){
-        cerr << "cannot set width with " << width << " is negative" << endl;
+        cerr << "cannot set width to " << width << " – is negative" << endl;
         width = 0; height = 0;
 
     }
     if(height < 0){
-        cerr << "cannot set height with " << height << " is negative" << endl;
+        cerr << "cannot set height to " << height << " – is negative" << endl;
         width = 0; height = 0;
     }
 }
