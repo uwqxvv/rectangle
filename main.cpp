@@ -26,6 +26,8 @@ public:
     Rectangle& setSize(double height, double width);
     Rectangle& changeSides();
     void print() const;
+    bool operator == (const Rectangle &other) const;
+    bool operator != (const Rectangle &other) const;
     friend ostream& operator<<(ostream& os, const Rectangle& rectangle);
 };
 
@@ -54,6 +56,16 @@ Rectangle :: Rectangle (double side){
 }
 double Rectangle :: aspect_ratio() const{
     return this -> width / this -> height;
+}
+Rectangle Rectangle::operator == (const Rectangle &other) const{
+    if(this -> height == other.height && this -> width == other.width)
+        return true;
+    return false;
+}
+Rectangle Rectangle::operator != (const Rectangle &other) const{
+    if(this -> height != other.height || this -> width != other.width)
+        return true;
+    return false;
 }
 Rectangle :: Rectangle (double height, double width){
     this -> width = width;
