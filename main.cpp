@@ -109,8 +109,5 @@ int main() {
     Rectangle r(v);
     cout << r << endl;
     cout << r.aspect_ratio();
-    //cout << x << endl;
-    //cout << y << endl;
-
     return 0;
 }
