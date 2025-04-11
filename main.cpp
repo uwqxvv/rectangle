@@ -26,8 +26,8 @@ public:
     Rectangle& setSize(double height, double width);
     Rectangle& changeSides();
     void print() const;
-    bool operator == (const Rectangle &other) const;
-    bool operator != (const Rectangle &other) const;
+    bool operator== (const Rectangle &other) const;
+    bool operator!= (const Rectangle &other) const;
     friend ostream& operator<<(ostream& os, const Rectangle& rectangle);
 };
 
@@ -57,12 +57,12 @@ Rectangle :: Rectangle (double side){
 double Rectangle :: aspect_ratio() const{
     return this -> width / this -> height;
 }
-Rectangle Rectangle::operator == (const Rectangle &other) const{
+bool Rectangle::operator== (const Rectangle &other) const{
     if(this -> height == other.height && this -> width == other.width)
         return true;
     return false;
 }
-Rectangle Rectangle::operator != (const Rectangle &other) const{
+bool Rectangle::operator!= (const Rectangle &other) const{
     if(this -> height != other.height || this -> width != other.width)
         return true;
     return false;
@@ -117,9 +117,7 @@ ostream& operator<<(ostream& os, const Rectangle& rectangle) {
 }
 
 int main() {
-    Vector2D v(2, 5);
-    Rectangle r(v);
-    cout << r << endl;
-    cout << r.aspect_ratio();
+    Rectangle r1(1, 2), r2(1, 2), r3(2, 1);
+    cout << (r1 == r2) << endl;
     return 0;
 }
