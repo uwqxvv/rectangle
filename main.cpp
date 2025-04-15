@@ -118,6 +118,7 @@ ostream& operator<<(ostream& os, const Rectangle& rectangle) {
 
 int main() {
     Rectangle r1(1, 2), r2(1, 2), r3(2, 1);
-    cout << "rectangles are equal: " << (r1 != r2) << endl;
+    r1.print();
+    r2.print();
     return 0;
 }
