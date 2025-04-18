@@ -50,29 +50,35 @@ Rectangle::Rectangle(Vector2D diagonal) {
     height = diagonal.getY();
     fixNegative();
 }
+
 Rectangle::Rectangle (double side){
     this -> width = side;
     this -> height = side;
     fixNegative();
 }
+
 double Rectangle::aspect_ratio() const{
     return this -> width / this -> height;
 }
+
 bool Rectangle::operator== (const Rectangle &other) const{
     if(this -> height == other.height && this -> width == other.width)
         return true;
     return false;
 }
+
 bool Rectangle::operator!= (const Rectangle &other) const{
     if(this -> height != other.height || this -> width != other.width)
         return true;
     return false;
 }
+
 Rectangle::Rectangle (double height, double width){
     this -> width = width;
     this -> height = height;
     fixNegative();
 }
+
 void Rectangle::show() const{
     char ch = 219;
     for(int h = 0; h < this-> height; h++){
@@ -82,19 +88,21 @@ void Rectangle::show() const{
     }
 }
 
-Vector2D Rectangle::getDiagonalVector() const {
+Vector2D Rectangle::getDiagonalVector() const{
     return Vector2D(this->width, this->height);
 }
 
 double Rectangle::area() const{
     return this -> width * this -> height;
 }
+
 double Rectangle::diagonal() const{
     return sqrt(this -> width* this -> width  + this -> height * this -> height) ;
 }
- double Rectangle::perimeter() const{
+
+double Rectangle::perimeter() const{
     return 2 * this -> height + 2 * this -> width;
- }
+}
  bool Rectangle::square() const{
     return (this -> height == this -> width);
 }
@@ -111,10 +119,9 @@ Rectangle& Rectangle::setSize(double height, double width){
 
 void Rectangle::print() const{
     cout << this -> height << ' ' << this -> width << endl;
-
 }
 
-ostream& operator<<(ostream& os, const Rectangle& rectangle) {
+ostream& operator<<(ostream& os, const Rectangle& rectangle){
     os << rectangle.height << ' ' << rectangle.width;
     return os;
 }
