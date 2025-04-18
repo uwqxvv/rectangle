@@ -23,6 +23,7 @@ public:
     double diagonal() const;
     double perimeter() const;
     bool square() const;
+    Vector2D getDiagonalVector() const;
     Rectangle& setSize(double height, double width);
     Rectangle& changeSides();
     void print() const;
@@ -81,7 +82,9 @@ void Rectangle::show() const{
     }
 }
 
-
+Vector2D Rectangle::getDiagonalVector() const {
+    return Vector2D(this->width, this->height);
+}
 
 double Rectangle::area() const{
     return this -> width * this -> height;
