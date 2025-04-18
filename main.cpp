@@ -123,5 +123,6 @@ int main() {
     Rectangle r1(1, 2), r2(1, 2), r3(2, 1);
     r1.print();
     r2.print();
+    cout << r1.getDiagonalVector() << endl;
     return 0;
 }
