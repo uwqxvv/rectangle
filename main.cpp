@@ -107,6 +107,10 @@ double Rectangle::perimeter() const{
  bool Rectangle::square() const{
     return (this -> height == this -> width);
 }
+
+bool fitsInto(const Rectangle &other) const{
+    return (( this -> height <= other.width && this -> width <= other.height) || (this -> height >= other.width && this -> width >= other.height));
+}
 Rectangle& Rectangle::changeSides(){
     swap(this -> height, this -> width);
     return *this;
