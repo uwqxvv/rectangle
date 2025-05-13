@@ -29,6 +29,7 @@ public:
     void print() const;
     bool operator== (const Rectangle &other) const;
     bool operator!= (const Rectangle &other) const;
+    bool fitsInto(const Rectangle &other) const;
     friend ostream& operator<<(ostream& os, const Rectangle& rectangle);
 };
 
