@@ -108,8 +108,10 @@ double Rectangle::perimeter() const{
     return (this -> height == this -> width);
 }
 
-bool fitsInto(const Rectangle &other) const{
-    return (( this -> height <= other.width && this -> width <= other.height) || (this -> height >= other.width && this -> width >= other.height));
+bool Rectangle::fitsInto(const Rectangle &other) const{
+    if(( this -> height <= other.width && this -> width <= other.height) || (this -> height >= other.width && this -> width >= other.height)) return true;
+    if(( this -> height <= other.height && this -> width <= other.width) || (this -> height >= other.height && this -> width >= other.width)) return true;
+    return false;
 }
 Rectangle& Rectangle::changeSides(){
     swap(this -> height, this -> width);
@@ -132,9 +134,9 @@ ostream& operator<<(ostream& os, const Rectangle& rectangle){
 }
 
 int main() {
-    Rectangle r1(1, 2), r2(1, 2), r3(2, 1);
+    Rectangle r1(2, 3), r2(1, 4), r3(2, 1);
     r1.print();
     r2.print();
-    cout << r1.getDiagonalVector() << endl;
+    cout << r2.fitsInto(r1) << endl;
     return 0;
 }
