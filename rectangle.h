@@ -18,7 +18,7 @@ public:
     Rectangle(double side);
     Rectangle(double height, double width);
     double aspect_ratio() const;
-    void show() const;
+    void show(ostream &os) const;
     double area() const;
     double diagonal() const;
     double perimeter() const;
@@ -26,7 +26,6 @@ public:
     Vector2D getDiagonalVector() const;
     Rectangle& setSize(double height, double width);
     Rectangle& changeSides();
-    void print() const;
     bool operator== (const Rectangle &other) const;
     bool operator!= (const Rectangle &other) const;
     bool fitsInto(const Rectangle &other) const;
@@ -80,12 +79,12 @@ Rectangle::Rectangle (double height, double width){
     fixNegative();
 }
 
-void Rectangle::show() const{
+void Rectangle::show(ostream &os) const{
     char ch = 219;
     for(int h = 0; h < this-> height; h++){
         for(int w = 0; w < width; w++ )
-            cout << ch;
-        cout << endl;
+            os << ch;
+        os << endl;
     }
 }
 
@@ -122,10 +121,6 @@ Rectangle& Rectangle::setSize(double height, double width){
     this -> width = width;
     fixNegative();
     return *this;
-}
-
-void Rectangle::print() const{
-    cout << this -> height << ' ' << this -> width << endl;
 }
 
 ostream& operator<<(ostream& os, const Rectangle& rectangle){
