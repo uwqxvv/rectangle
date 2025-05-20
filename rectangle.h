@@ -11,7 +11,14 @@ private:
     double width;
     double height;
     void fixNegative();
+    // inline static int count = 0;
+    static int& accessCount() {
+        static int s_count = 0;
+        return s_count;
+    }
+    void handleCreation();
 public:
+    static int getRectangleCount();
     Rectangle();
     Rectangle (Vector2D diagonal);
     Rectangle(double side);
@@ -31,6 +38,15 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const Rectangle& rectangle);
 };
 
+void Rectangle::handleCreation() {
+    accessCount()++;
+    std::cerr << "Rectangle created! Current count: " << accessCount() << std::endl;
+}
+
+int Rectangle::getRectangleCount() {
+    return accessCount();
+}
+
 void Rectangle::fixNegative() {
     if(width < 0 ){
         std::cerr << "cannot set width to " << width << " – is negative" << std::endl;
@@ -43,17 +59,22 @@ void Rectangle::fixNegative() {
     }
 }
 
-Rectangle::Rectangle() : width(0), height(0) {};
+Rectangle::Rectangle() : width(0), height(0) {
+    handleCreation();
+};
+
 Rectangle::Rectangle(Vector2D diagonal) {
     width = diagonal.getX();
     height = diagonal.getY();
     fixNegative();
+    handleCreation();
 }
 
 Rectangle::Rectangle (double side){
     this -> width = side;
     this -> height = side;
     fixNegative();
+    handleCreation();
 }
 
 double Rectangle::aspect_ratio() const{
@@ -76,6 +97,7 @@ Rectangle::Rectangle (double height, double width){
     this -> width = width;
     this -> height = height;
     fixNegative();
+    handleCreation();
 }
 
 void Rectangle::show(std::ostream &os) const{
