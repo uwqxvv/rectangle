@@ -4,7 +4,6 @@
 #include <cmath>
 #include <algorithm>
 #include "vector2d.h"
-using namespace std;
 
 class Rectangle{
 
