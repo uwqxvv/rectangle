@@ -1,4 +1,5 @@
 #include "rectangle.h"
+using namespace std;
 
 int main() {
     Rectangle r1(3, 4);

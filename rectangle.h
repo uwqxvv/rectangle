@@ -17,7 +17,7 @@ public:
     Rectangle(double side);
     Rectangle(double height, double width);
     double aspect_ratio() const;
-    void show(ostream &os) const;
+    void show(std::ostream &os) const;
     double area() const;
     double diagonal() const;
     double perimeter() const;
@@ -28,17 +28,17 @@ public:
     bool operator== (const Rectangle &other) const;
     bool operator!= (const Rectangle &other) const;
     bool fitsInto(const Rectangle &other) const;
-    friend ostream& operator<<(ostream& os, const Rectangle& rectangle);
+    friend std::ostream& operator<<(std::ostream& os, const Rectangle& rectangle);
 };
 
 void Rectangle::fixNegative() {
     if(width < 0 ){
-        cerr << "cannot set width to " << width << " – is negative" << endl;
+        std::cerr << "cannot set width to " << width << " – is negative" << std::endl;
         width = 0; height = 0;
 
     }
     if(height < 0){
-        cerr << "cannot set height to " << height << " – is negative" << endl;
+        std::cerr << "cannot set height to " << height << " – is negative" << std::endl;
         width = 0; height = 0;
     }
 }
@@ -78,12 +78,12 @@ Rectangle::Rectangle (double height, double width){
     fixNegative();
 }
 
-void Rectangle::show(ostream &os) const{
+void Rectangle::show(std::ostream &os) const{
     char ch = 219;
     for(int h = 0; h < this-> height; h++){
         for(int w = 0; w < width; w++ )
             os << ch;
-        os << endl;
+        os << std::endl;
     }
 }
 
@@ -112,7 +112,7 @@ bool Rectangle::fitsInto(const Rectangle &other) const{
     return false;
 }
 Rectangle& Rectangle::changeSides(){
-    swap(this -> height, this -> width);
+    std::swap(this -> height, this -> width);
     return *this;
  }
 Rectangle& Rectangle::setSize(double height, double width){
@@ -122,7 +122,7 @@ Rectangle& Rectangle::setSize(double height, double width){
     return *this;
 }
 
-ostream& operator<<(ostream& os, const Rectangle& rectangle){
+std::ostream& operator<<(std::ostream& os, const Rectangle& rectangle){
     os << rectangle.height << ' ' << rectangle.width;
     return os;
 }

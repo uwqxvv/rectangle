@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <math.h>
-using namespace std;
 
 class Vector2D
 {
@@ -28,7 +27,7 @@ public:
     Vector2D &operator-=(const Vector2D &other);
     bool operator==(const Vector2D &other) const;
     bool operator!=(const Vector2D &other) const;
-    friend ostream &operator<<(ostream &os, const Vector2D &vector);
+    friend std::ostream &operator<<(std::ostream &os, const Vector2D &vector);
 };
 
 void Vector2D::recalculateLength() {
@@ -125,7 +124,7 @@ bool Vector2D::operator!=(const Vector2D &other) const
     return !(*this == other);
 }
 
-ostream &operator<<(ostream &os, const Vector2D& vector)
+std::ostream &operator<<(std::ostream &os, const Vector2D& vector)
 {
     os << "(" << vector.x << "; " << vector.y << ")";
     return os;
