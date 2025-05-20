@@ -14,7 +14,6 @@ private:
 public:
     Vector2D(double x, double y);
     Vector2D();
-    void print() const;
     double getX() const;
     double getY() const;
     double getLength() const;
@@ -48,11 +47,6 @@ Vector2D::Vector2D(double x, double y)
     this->x = x;
     this->y = y;
     this->recalculateLength();
-}
-
-void Vector2D::print() const
-{
-    cout << "(" << this->x << "; " << this->y << ") length = " << this->length << endl;
 }
 
 double Vector2D::getX() const
